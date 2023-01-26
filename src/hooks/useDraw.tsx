@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import amigoRepository from "../repositories/amigoRepository";
 
-function useDraw() {
+const useDraw = () => {
   const [draws, setDraws] = useState<[]>([]);
   const [stats, setStats] = useState<number[]>();
   const [probability, setProbability] = useState<number[]>([]);
