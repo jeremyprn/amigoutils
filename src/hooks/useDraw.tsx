@@ -40,8 +40,11 @@ const useDraw = () => {
   };
 
   function calculateAllProbabilities() {
+    console.log("----")
     for (let i: number = 1; i <= 28; i++) {
-      setProbability((old) => [...old, calculateProbability(draws, i)]);
+      const proba = calculateProbability(draws, i);
+      setProbability(oldProbability => [...oldProbability, proba]);
+      console.log(probability)
     }
   }
 
@@ -65,16 +68,14 @@ const useDraw = () => {
 
     // Calculate probability by dividing total num of numbers with numbers already drawn
     const probability = numbersTotal / numbersDrawn;
-
     return probability;
   }
-
   useEffect(() => {
     getDraws();
   }, [isToday]);
 
   useEffect(() => {
-    if (draws) {
+    if (draws.length) {
       countOccurences();
       calculateAllProbabilities();
     }
